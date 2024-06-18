@@ -1,0 +1,14 @@
+apiVersion: kobe.semagrow.org/v1alpha1
+kind: Experiment
+metadata:
+  name: het3nodelay-mincostgreedy-exp
+spec:
+  benchmark: fedbench-het3-nodelay
+  federatorName: hefquin-mincostgreedy
+  federatorTemplateRef: hefquintemplate-mincost-greedy
+  evaluator:
+    # image: semagrow/kobe-sequential-evaluator
+    image: chengsijin817/hefquin-evaluator
+  timesToRun: 6
+  dryRun: false
+  forceNewInit: true 
