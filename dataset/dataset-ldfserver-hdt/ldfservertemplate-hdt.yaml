@@ -1,0 +1,17 @@
+apiVersion: kobe.semagrow.org/v1alpha1
+kind: DatasetTemplate
+metadata:
+  name: ldfservertemplate-hdt
+spec:
+  initContainers:
+    - name: initcontainer
+      image: chengsijin817/ldfserver-init-hdt
+  containers:
+    - name: maincontainer
+      image: chengsijin817/ldfserver-main-hdt
+      ports:
+        - containerPort: 3000
+  port: 3000
+  path: /hdtdata
+  initPolicy: ForceInit
+
