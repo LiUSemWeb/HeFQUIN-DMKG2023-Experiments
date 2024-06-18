@@ -1,0 +1,176 @@
+I - 2023-03-21 15:26:02,077 - [      main] -     SesameEvaluation - 6e3c3434da7f - Performing Sesame Initialization...
+I - 2023-03-21 15:26:02,118 - [      main] -       SPARQLProvider - 6e3c3434da7f - Registering SPARQL endpoint http://hefquin-cardgreedy.fedbench-het3-nodelay.svc:8080/hefquin/sparql
+I - 2023-03-21 15:26:02,265 - [      main] -     SesameEvaluation - 6e3c3434da7f - Sesame Repository successfully initialized.
+I - 2023-03-21 15:26:02,266 - [      main] -           Evaluation - 6e3c3434da7f - Evaluation of queries in multiple runs...
+I - 2023-03-21 15:26:03,855 - [      main] -   MemoryReportStream - 38cde8dba12a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 1 - Query Evaluation Time: 1587 - Results: 90
+I - 2023-03-21 15:26:04,949 - [      main] -   MemoryReportStream - 9092f70e75c7 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 1 - Query Evaluation Time: 93 - Results: 1
+I - 2023-03-21 15:26:06,065 - [      main] -   MemoryReportStream - 66fc04d905af - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 1 - Query Evaluation Time: 115 - Results: 2
+I - 2023-03-21 15:26:07,195 - [      main] -   MemoryReportStream - ca3bafe62d8b - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 1 - Query Evaluation Time: 130 - Results: 1
+I - 2023-03-21 15:26:08,265 - [      main] -   MemoryReportStream - 4a92c062efec - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 1 - Query Evaluation Time: 70 - Results: 2
+I - 2023-03-21 15:26:10,807 - [      main] -   MemoryReportStream - 3a4bf69a19a6 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 1 - Query Evaluation Time: 1541 - Results: 11
+I - 2023-03-21 15:26:12,416 - [      main] -   MemoryReportStream - b6c0d7fc6897 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 1 - Query Evaluation Time: 608 - Results: 2
+I - 2023-03-21 15:26:14,125 - [      main] -   MemoryReportStream - 7d0120152a3a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 1 - Query Evaluation Time: 709 - Results: 309
+I - 2023-03-21 15:26:15,246 - [      main] -   MemoryReportStream - c12e75885278 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 1 - Query Evaluation Time: 121 - Results: 3
+I - 2023-03-21 15:26:17,518 - [      main] -   MemoryReportStream - 50759878db27 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 1 - Query Evaluation Time: 1272 - Results: 376
+I - 2023-03-21 15:26:18,634 - [      main] -   MemoryReportStream - 3d3e99c98ca2 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 1 - Query Evaluation Time: 115 - Results: 185
+I - 2023-03-21 15:26:20,392 - [      main] -   MemoryReportStream - 34d4c86a3afa - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 1 - Query Evaluation Time: 758 - Results: 162
+I - 2023-03-21 15:26:21,603 - [      main] -   MemoryReportStream - d8722d279a84 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 1 - Query Evaluation Time: 211 - Results: 50
+I - 2023-03-21 15:26:22,678 - [      main] -   MemoryReportStream - b96d0cc3d532 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 1 - Query Evaluation Time: 74 - Results: 28
+I - 2023-03-21 15:26:23,781 - [      main] -   MemoryReportStream - 40adbf271e04 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 1 - Query Evaluation Time: 103 - Results: 39
+I - 2023-03-21 15:27:07,790 - [      main] -   MemoryReportStream - 56a1dafb15f3 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 1 - Query Evaluation Time: 43008 - Results: 592
+I - 2023-03-21 15:27:56,711 - [      main] -   MemoryReportStream - 5693a99af6a0 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 1 - Query Evaluation Time: 47920 - Results: 18
+I - 2023-03-21 15:27:57,947 - [      main] -   MemoryReportStream - 6b720327e4c0 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 1 - Query Evaluation Time: 236 - Results: 1159
+I - 2023-03-21 15:27:59,083 - [      main] -   MemoryReportStream - fb03d522ae9f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 1 - Query Evaluation Time: 135 - Results: 333
+I - 2023-03-21 15:28:03,197 - [      main] -   MemoryReportStream - 5451f4eee2eb - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 1 - Query Evaluation Time: 3114 - Results: 9054
+I - 2023-03-21 15:28:04,247 - [      main] -   MemoryReportStream - de981b909b4f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 1 - Query Evaluation Time: 50 - Results: 3
+I - 2023-03-21 15:28:06,612 - [      main] -   MemoryReportStream - 86a511f42441 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 1 - Query Evaluation Time: 1365 - Results: 393
+I - 2023-03-21 15:28:07,847 - [      main] -   MemoryReportStream - 0f20353b1b70 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 1 - Query Evaluation Time: 235 - Results: 28
+I - 2023-03-21 15:28:09,428 - [      main] -   MemoryReportStream - 8bb11c101768 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 1 - Query Evaluation Time: 581 - Results: 1620
+I - 2023-03-21 15:28:10,579 - [      main] -   MemoryReportStream - 8c018d6f2057 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 2 - Query Evaluation Time: 151 - Results: 90
+I - 2023-03-21 15:28:11,620 - [      main] -   MemoryReportStream - d34f011c4632 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 2 - Query Evaluation Time: 40 - Results: 1
+I - 2023-03-21 15:28:12,691 - [      main] -   MemoryReportStream - fbac71979993 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 2 - Query Evaluation Time: 71 - Results: 2
+I - 2023-03-21 15:28:13,781 - [      main] -   MemoryReportStream - 2f6f669d458b - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 2 - Query Evaluation Time: 90 - Results: 1
+I - 2023-03-21 15:28:14,836 - [      main] -   MemoryReportStream - 9a11e826f9e5 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 2 - Query Evaluation Time: 55 - Results: 2
+I - 2023-03-21 15:28:17,052 - [      main] -   MemoryReportStream - 113ad650870e - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 2 - Query Evaluation Time: 1215 - Results: 11
+I - 2023-03-21 15:28:18,604 - [      main] -   MemoryReportStream - 905b16931704 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 2 - Query Evaluation Time: 552 - Results: 2
+I - 2023-03-21 15:28:20,162 - [      main] -   MemoryReportStream - abb68f177574 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 2 - Query Evaluation Time: 558 - Results: 309
+I - 2023-03-21 15:28:21,247 - [      main] -   MemoryReportStream - bab6b987d9cc - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 2 - Query Evaluation Time: 84 - Results: 3
+I - 2023-03-21 15:28:23,393 - [      main] -   MemoryReportStream - 773fe9fc3881 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 2 - Query Evaluation Time: 1146 - Results: 376
+I - 2023-03-21 15:28:24,478 - [      main] -   MemoryReportStream - 20d90e4cc06a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 2 - Query Evaluation Time: 85 - Results: 185
+I - 2023-03-21 15:28:26,216 - [      main] -   MemoryReportStream - 0ea5b59e5924 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 2 - Query Evaluation Time: 738 - Results: 162
+I - 2023-03-21 15:28:27,421 - [      main] -   MemoryReportStream - 7e1b2eac3c77 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 2 - Query Evaluation Time: 204 - Results: 50
+I - 2023-03-21 15:28:28,498 - [      main] -   MemoryReportStream - dff3d8721db7 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 2 - Query Evaluation Time: 76 - Results: 28
+I - 2023-03-21 15:28:29,571 - [      main] -   MemoryReportStream - f377a105225f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 2 - Query Evaluation Time: 72 - Results: 39
+I - 2023-03-21 15:29:13,537 - [      main] -   MemoryReportStream - e57749fcb4d8 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 2 - Query Evaluation Time: 42965 - Results: 592
+I - 2023-03-21 15:30:02,307 - [      main] -   MemoryReportStream - 1f265e99cc32 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 2 - Query Evaluation Time: 47769 - Results: 18
+I - 2023-03-21 15:30:03,409 - [      main] -   MemoryReportStream - 15641a5d4896 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 2 - Query Evaluation Time: 102 - Results: 1159
+I - 2023-03-21 15:30:04,549 - [      main] -   MemoryReportStream - 2b1246e4cf88 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 2 - Query Evaluation Time: 139 - Results: 333
+I - 2023-03-21 15:30:08,348 - [      main] -   MemoryReportStream - 6f9267f3852f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 2 - Query Evaluation Time: 2798 - Results: 9054
+I - 2023-03-21 15:30:09,393 - [      main] -   MemoryReportStream - bbc00c59921d - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 2 - Query Evaluation Time: 45 - Results: 3
+I - 2023-03-21 15:30:11,424 - [      main] -   MemoryReportStream - 0523554f0b72 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 2 - Query Evaluation Time: 1031 - Results: 393
+I - 2023-03-21 15:30:12,622 - [      main] -   MemoryReportStream - ce76e6490a06 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 2 - Query Evaluation Time: 197 - Results: 28
+I - 2023-03-21 15:30:14,139 - [      main] -   MemoryReportStream - 7e7cdb734769 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 2 - Query Evaluation Time: 517 - Results: 1620
+I - 2023-03-21 15:30:15,288 - [      main] -   MemoryReportStream - ef62a21d3518 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 3 - Query Evaluation Time: 148 - Results: 90
+I - 2023-03-21 15:30:16,324 - [      main] -   MemoryReportStream - 1cba15544386 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 3 - Query Evaluation Time: 35 - Results: 1
+I - 2023-03-21 15:30:17,386 - [      main] -   MemoryReportStream - 6de323c3a65d - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 3 - Query Evaluation Time: 62 - Results: 2
+I - 2023-03-21 15:30:18,468 - [      main] -   MemoryReportStream - 8496b8613c54 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 3 - Query Evaluation Time: 82 - Results: 1
+I - 2023-03-21 15:30:19,522 - [      main] -   MemoryReportStream - 6440f06226a5 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 3 - Query Evaluation Time: 54 - Results: 2
+I - 2023-03-21 15:30:21,864 - [      main] -   MemoryReportStream - e2d5ac9dfcde - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 3 - Query Evaluation Time: 1341 - Results: 11
+I - 2023-03-21 15:30:23,472 - [      main] -   MemoryReportStream - 3d0cd91dc500 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 3 - Query Evaluation Time: 608 - Results: 2
+I - 2023-03-21 15:30:25,015 - [      main] -   MemoryReportStream - 49da4f6e845e - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 3 - Query Evaluation Time: 543 - Results: 309
+I - 2023-03-21 15:30:26,110 - [      main] -   MemoryReportStream - f4067a968ae1 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 3 - Query Evaluation Time: 95 - Results: 3
+I - 2023-03-21 15:30:28,242 - [      main] -   MemoryReportStream - b2a85f940266 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 3 - Query Evaluation Time: 1132 - Results: 376
+I - 2023-03-21 15:30:29,344 - [      main] -   MemoryReportStream - 9724cd2b7302 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 3 - Query Evaluation Time: 102 - Results: 185
+I - 2023-03-21 15:30:31,041 - [      main] -   MemoryReportStream - 5d8ee1c1d321 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 3 - Query Evaluation Time: 696 - Results: 162
+I - 2023-03-21 15:30:32,192 - [      main] -   MemoryReportStream - 9fe756f7ef2c - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 3 - Query Evaluation Time: 151 - Results: 50
+I - 2023-03-21 15:30:33,270 - [      main] -   MemoryReportStream - 6a7eff87c6ad - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 3 - Query Evaluation Time: 77 - Results: 28
+I - 2023-03-21 15:30:34,326 - [      main] -   MemoryReportStream - 59472656c555 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 3 - Query Evaluation Time: 56 - Results: 39
+I - 2023-03-21 15:31:16,717 - [      main] -   MemoryReportStream - c2cc40ec33c7 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 3 - Query Evaluation Time: 41390 - Results: 592
+I - 2023-03-21 15:32:05,410 - [      main] -   MemoryReportStream - 97deae802894 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 3 - Query Evaluation Time: 47693 - Results: 18
+I - 2023-03-21 15:32:06,611 - [      main] -   MemoryReportStream - 7b174622c631 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 3 - Query Evaluation Time: 201 - Results: 1159
+I - 2023-03-21 15:32:07,746 - [      main] -   MemoryReportStream - ff1996aadf63 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 3 - Query Evaluation Time: 134 - Results: 333
+I - 2023-03-21 15:32:11,805 - [      main] -   MemoryReportStream - ed2e27895517 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 3 - Query Evaluation Time: 3058 - Results: 9054
+I - 2023-03-21 15:32:12,857 - [      main] -   MemoryReportStream - 09c7921197b5 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 3 - Query Evaluation Time: 51 - Results: 3
+I - 2023-03-21 15:32:14,869 - [      main] -   MemoryReportStream - 22b9822d8979 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 3 - Query Evaluation Time: 1012 - Results: 393
+I - 2023-03-21 15:32:16,051 - [      main] -   MemoryReportStream - 49c9a8e9611a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 3 - Query Evaluation Time: 181 - Results: 28
+I - 2023-03-21 15:32:17,720 - [      main] -   MemoryReportStream - 2ad1110e1630 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 3 - Query Evaluation Time: 669 - Results: 1620
+I - 2023-03-21 15:32:18,858 - [      main] -   MemoryReportStream - 4249864c531e - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 4 - Query Evaluation Time: 137 - Results: 90
+I - 2023-03-21 15:32:19,896 - [      main] -   MemoryReportStream - 51a4f7e9ca92 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 4 - Query Evaluation Time: 38 - Results: 1
+I - 2023-03-21 15:32:20,961 - [      main] -   MemoryReportStream - cac246ba220a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 4 - Query Evaluation Time: 65 - Results: 2
+I - 2023-03-21 15:32:22,026 - [      main] -   MemoryReportStream - a7e97cf915b6 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 4 - Query Evaluation Time: 65 - Results: 1
+I - 2023-03-21 15:32:23,069 - [      main] -   MemoryReportStream - 9c7b47ccb49e - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 4 - Query Evaluation Time: 43 - Results: 2
+I - 2023-03-21 15:32:25,181 - [      main] -   MemoryReportStream - e31b90e73ba2 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 4 - Query Evaluation Time: 1111 - Results: 11
+I - 2023-03-21 15:32:26,699 - [      main] -   MemoryReportStream - e8b4ed11b1b3 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 4 - Query Evaluation Time: 518 - Results: 2
+I - 2023-03-21 15:32:28,207 - [      main] -   MemoryReportStream - 8edf6519a274 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 4 - Query Evaluation Time: 507 - Results: 309
+I - 2023-03-21 15:32:29,333 - [      main] -   MemoryReportStream - 5d16efb29ded - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 4 - Query Evaluation Time: 126 - Results: 3
+I - 2023-03-21 15:32:31,430 - [      main] -   MemoryReportStream - 4e9cd8d73a3a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 4 - Query Evaluation Time: 1097 - Results: 376
+I - 2023-03-21 15:32:32,498 - [      main] -   MemoryReportStream - 6afac83f88ef - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 4 - Query Evaluation Time: 67 - Results: 185
+I - 2023-03-21 15:32:34,156 - [      main] -   MemoryReportStream - 40121fb886d3 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 4 - Query Evaluation Time: 657 - Results: 162
+I - 2023-03-21 15:32:35,310 - [      main] -   MemoryReportStream - 309def6e042d - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 4 - Query Evaluation Time: 154 - Results: 50
+I - 2023-03-21 15:32:36,396 - [      main] -   MemoryReportStream - bbce801f6414 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 4 - Query Evaluation Time: 86 - Results: 28
+I - 2023-03-21 15:32:37,457 - [      main] -   MemoryReportStream - 8239636608ad - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 4 - Query Evaluation Time: 60 - Results: 39
+I - 2023-03-21 15:33:20,033 - [      main] -   MemoryReportStream - 83a98d52c286 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 4 - Query Evaluation Time: 41576 - Results: 592
+I - 2023-03-21 15:34:08,374 - [      main] -   MemoryReportStream - 8b28e2f4bc63 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 4 - Query Evaluation Time: 47340 - Results: 18
+I - 2023-03-21 15:34:09,489 - [      main] -   MemoryReportStream - 8dfe63bd93b1 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 4 - Query Evaluation Time: 114 - Results: 1159
+I - 2023-03-21 15:34:10,651 - [      main] -   MemoryReportStream - 362cd7ce2a8f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 4 - Query Evaluation Time: 162 - Results: 333
+I - 2023-03-21 15:34:14,565 - [      main] -   MemoryReportStream - 60edc7e2fd32 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 4 - Query Evaluation Time: 2913 - Results: 9054
+I - 2023-03-21 15:34:15,609 - [      main] -   MemoryReportStream - 9de77503bcf8 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 4 - Query Evaluation Time: 43 - Results: 3
+I - 2023-03-21 15:34:17,707 - [      main] -   MemoryReportStream - 1aefb75271b2 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 4 - Query Evaluation Time: 1098 - Results: 393
+I - 2023-03-21 15:34:18,935 - [      main] -   MemoryReportStream - 14e36cdfccd4 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 4 - Query Evaluation Time: 227 - Results: 28
+I - 2023-03-21 15:34:20,449 - [      main] -   MemoryReportStream - 8e06a9e4ab88 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 4 - Query Evaluation Time: 513 - Results: 1620
+I - 2023-03-21 15:34:21,594 - [      main] -   MemoryReportStream - acefc7d71d47 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 5 - Query Evaluation Time: 143 - Results: 90
+I - 2023-03-21 15:34:22,634 - [      main] -   MemoryReportStream - f4c15fa522eb - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 5 - Query Evaluation Time: 40 - Results: 1
+I - 2023-03-21 15:34:23,705 - [      main] -   MemoryReportStream - 5e3c72c9d7ba - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 5 - Query Evaluation Time: 70 - Results: 2
+I - 2023-03-21 15:34:24,776 - [      main] -   MemoryReportStream - 94a61331acee - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 5 - Query Evaluation Time: 71 - Results: 1
+I - 2023-03-21 15:34:25,821 - [      main] -   MemoryReportStream - 803cc8365cc3 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 5 - Query Evaluation Time: 45 - Results: 2
+I - 2023-03-21 15:34:28,017 - [      main] -   MemoryReportStream - 2d1c558013d8 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 5 - Query Evaluation Time: 1196 - Results: 11
+I - 2023-03-21 15:34:29,542 - [      main] -   MemoryReportStream - 6c3734871b01 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 5 - Query Evaluation Time: 525 - Results: 2
+I - 2023-03-21 15:34:31,082 - [      main] -   MemoryReportStream - 2cff0492ed09 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 5 - Query Evaluation Time: 540 - Results: 309
+I - 2023-03-21 15:34:32,157 - [      main] -   MemoryReportStream - 9df0d8e72f36 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 5 - Query Evaluation Time: 75 - Results: 3
+I - 2023-03-21 15:34:34,253 - [      main] -   MemoryReportStream - 8e9eb4ba0ee9 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 5 - Query Evaluation Time: 1096 - Results: 376
+I - 2023-03-21 15:34:35,345 - [      main] -   MemoryReportStream - 4dc72cbd0633 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 5 - Query Evaluation Time: 92 - Results: 185
+I - 2023-03-21 15:34:37,049 - [      main] -   MemoryReportStream - f1518b0546c5 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 5 - Query Evaluation Time: 704 - Results: 162
+I - 2023-03-21 15:34:38,228 - [      main] -   MemoryReportStream - c14bed9cca5c - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 5 - Query Evaluation Time: 179 - Results: 50
+I - 2023-03-21 15:34:39,292 - [      main] -   MemoryReportStream - c6040b7f9a22 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 5 - Query Evaluation Time: 63 - Results: 28
+I - 2023-03-21 15:34:40,345 - [      main] -   MemoryReportStream - efa1e0896fd9 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 5 - Query Evaluation Time: 53 - Results: 39
+I - 2023-03-21 15:35:23,148 - [      main] -   MemoryReportStream - b9b1aa761302 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 5 - Query Evaluation Time: 41802 - Results: 592
+I - 2023-03-21 15:36:12,242 - [      main] -   MemoryReportStream - 9df5295cf6a8 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 5 - Query Evaluation Time: 48094 - Results: 18
+I - 2023-03-21 15:36:13,392 - [      main] -   MemoryReportStream - 97e161c7b672 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 5 - Query Evaluation Time: 149 - Results: 1159
+I - 2023-03-21 15:36:14,554 - [      main] -   MemoryReportStream - b4dc921cd2b8 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 5 - Query Evaluation Time: 162 - Results: 333
+I - 2023-03-21 15:36:18,504 - [      main] -   MemoryReportStream - 574233a413ef - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 5 - Query Evaluation Time: 2949 - Results: 9054
+I - 2023-03-21 15:36:19,552 - [      main] -   MemoryReportStream - 3dfcf0b86b5a - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 5 - Query Evaluation Time: 48 - Results: 3
+I - 2023-03-21 15:36:21,953 - [      main] -   MemoryReportStream - 5758bd0830f3 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 5 - Query Evaluation Time: 1401 - Results: 393
+I - 2023-03-21 15:36:23,147 - [      main] -   MemoryReportStream - 41c977e1a527 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 5 - Query Evaluation Time: 194 - Results: 28
+I - 2023-03-21 15:36:24,711 - [      main] -   MemoryReportStream - f22d878b1a2f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 5 - Query Evaluation Time: 564 - Results: 1620
+I - 2023-03-21 15:36:25,860 - [      main] -   MemoryReportStream - 6703d8ed0662 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd1 - Run: 6 - Query Evaluation Time: 148 - Results: 90
+I - 2023-03-21 15:36:26,895 - [      main] -   MemoryReportStream - 3567490a896f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd2 - Run: 6 - Query Evaluation Time: 35 - Results: 1
+I - 2023-03-21 15:36:27,960 - [      main] -   MemoryReportStream - ae9ba7f316de - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd3 - Run: 6 - Query Evaluation Time: 64 - Results: 2
+I - 2023-03-21 15:36:29,021 - [      main] -   MemoryReportStream - 377c5fc9b167 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd4 - Run: 6 - Query Evaluation Time: 61 - Results: 1
+I - 2023-03-21 15:36:30,067 - [      main] -   MemoryReportStream - 0895fd86d057 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd5 - Run: 6 - Query Evaluation Time: 46 - Results: 2
+I - 2023-03-21 15:36:32,201 - [      main] -   MemoryReportStream - c85f524e4508 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd6 - Run: 6 - Query Evaluation Time: 1134 - Results: 11
+I - 2023-03-21 15:36:33,689 - [      main] -   MemoryReportStream - ea47022ba6e6 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: cd7 - Run: 6 - Query Evaluation Time: 488 - Results: 2
+I - 2023-03-21 15:36:35,272 - [      main] -   MemoryReportStream - 005604a4e19b - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld1 - Run: 6 - Query Evaluation Time: 582 - Results: 309
+I - 2023-03-21 15:36:36,350 - [      main] -   MemoryReportStream - ffc148d908bd - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld10 - Run: 6 - Query Evaluation Time: 78 - Results: 3
+I - 2023-03-21 15:36:38,453 - [      main] -   MemoryReportStream - ac8f7c86dacd - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld11 - Run: 6 - Query Evaluation Time: 1103 - Results: 376
+I - 2023-03-21 15:36:39,526 - [      main] -   MemoryReportStream - 3465db57ebd1 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld2 - Run: 6 - Query Evaluation Time: 73 - Results: 185
+I - 2023-03-21 15:36:41,169 - [      main] -   MemoryReportStream - 8f9b799e0075 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld3 - Run: 6 - Query Evaluation Time: 643 - Results: 162
+I - 2023-03-21 15:36:42,311 - [      main] -   MemoryReportStream - ebbff807dd58 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld4 - Run: 6 - Query Evaluation Time: 142 - Results: 50
+I - 2023-03-21 15:36:43,379 - [      main] -   MemoryReportStream - de469bbce4bc - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld5 - Run: 6 - Query Evaluation Time: 67 - Results: 28
+I - 2023-03-21 15:36:44,438 - [      main] -   MemoryReportStream - f1fa485337ad - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld6 - Run: 6 - Query Evaluation Time: 58 - Results: 39
+I - 2023-03-21 15:37:26,850 - [      main] -   MemoryReportStream - e20a82d61b6f - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld7 - Run: 6 - Query Evaluation Time: 41412 - Results: 592
+I - 2023-03-21 15:38:15,015 - [      main] -   MemoryReportStream - 653ef2c13381 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ld8 - Run: 6 - Query Evaluation Time: 47164 - Results: 18
+I - 2023-03-21 15:38:16,194 - [      main] -   MemoryReportStream - b8d33df1897d - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls1 - Run: 6 - Query Evaluation Time: 179 - Results: 1159
+I - 2023-03-21 15:38:17,338 - [      main] -   MemoryReportStream - ecbedb268279 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls2 - Run: 6 - Query Evaluation Time: 144 - Results: 333
+I - 2023-03-21 15:38:21,152 - [      main] -   MemoryReportStream - acc294dfeb88 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls3 - Run: 6 - Query Evaluation Time: 2812 - Results: 9054
+I - 2023-03-21 15:38:22,192 - [      main] -   MemoryReportStream - 3ccdd5c80ff9 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls4 - Run: 6 - Query Evaluation Time: 40 - Results: 3
+I - 2023-03-21 15:38:24,249 - [      main] -   MemoryReportStream - c4ac7dd7fce0 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls5 - Run: 6 - Query Evaluation Time: 1057 - Results: 393
+I - 2023-03-21 15:38:25,451 - [      main] -   MemoryReportStream - c94f831c18c5 - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls6 - Run: 6 - Query Evaluation Time: 202 - Results: 28
+I - 2023-03-21 15:38:27,113 - [      main] -   MemoryReportStream - 4809823084dd - Experiment: het3nodelay-cardgreedy-exp - Date: 2023-03-21 15:26:02 - Query: ls7 - Run: 6 - Query Evaluation Time: 662 - Results: 1620
+I - 2023-03-21 15:38:28,116 - [      main] -           Evaluation - 4809823084dd - Evaluation of queries done.
+I - 2023-03-21 15:38:28,116 - [      main] -           Evaluation - 4809823084dd - Peform any cleanup operation.
+I - 2023-03-21 15:38:28,119 - [  Thread-0] -     SesameEvaluation - 4809823084dd - Connection successfully closed.
+Query;run1;run2;run3;run4;run5;run6;avg;numResults;minRes;maxRes;
+cd1;1587;151;148;137;143;148;386;90;90;90;
+cd2;93;40;35;38;40;35;47;1;1;1;
+cd3;115;71;62;65;70;64;75;2;2;2;
+cd4;130;90;82;65;71;61;84;1;1;1;
+cd5;70;55;54;43;45;46;53;2;2;2;
+cd6;1541;1215;1341;1111;1196;1134;1257;11;11;11;
+cd7;608;552;608;518;525;488;550;2;2;2;
+ld1;709;558;543;507;540;582;574;309;309;309;
+ld10;121;84;95;126;75;78;97;3;3;3;
+ld11;1272;1146;1132;1097;1096;1103;1142;376;376;376;
+ld2;115;85;102;67;92;73;90;185;185;185;
+ld3;758;738;696;657;704;643;700;162;162;162;
+ld4;211;204;151;154;179;142;174;50;50;50;
+ld5;74;76;77;86;63;67;74;28;28;28;
+ld6;103;72;56;60;53;58;68;39;39;39;
+ld7;43008;42965;41390;41576;41802;41412;42026;592;592;592;
+ld8;47920;47769;47693;47340;48094;47164;47664;18;18;18;
+ls1;236;102;201;114;149;179;164;1159;1159;1159;
+ls2;135;139;134;162;162;144;147;333;333;333;
+ls3;3114;2798;3058;2913;2949;2812;2941;9054;9054;9054;
+ls4;50;45;51;43;48;40;47;3;3;3;
+ls5;1365;1031;1012;1098;1401;1057;1161;393;393;393;
+ls6;235;197;181;227;194;202;207;28;28;28;
+ls7;581;517;669;513;564;662;585;1620;1620;1620;
