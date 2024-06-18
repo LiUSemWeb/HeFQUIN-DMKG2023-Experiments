@@ -1,0 +1,19 @@
+apiVersion: kobe.semagrow.org/v1alpha1
+kind: DatasetTemplate
+metadata:
+  name: virtuosotemplate
+spec:
+  initContainers:
+    - name: initcontainer0
+      image: semagrow/url-downloader
+    - name: initcontainer1
+      image: semagrow/virtuoso-init
+  containers:
+    - name: maincontainer
+      image: semagrow/virtuoso-main
+      ports:
+        - containerPort: 8890
+  port: 8890
+  path: /sparql
+  initPolicy: ForceInit
+
