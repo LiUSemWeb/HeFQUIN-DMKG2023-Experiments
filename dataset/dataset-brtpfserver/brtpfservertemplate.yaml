@@ -1,0 +1,17 @@
+apiVersion: kobe.semagrow.org/v1alpha1
+kind: DatasetTemplate
+metadata:
+  name: brtpfservertemplate
+spec:
+  initContainers:
+    - name: initcontainer
+      image: chengsijin817/brtpfserver-init
+  containers:
+    - name: maincontainer
+      image: chengsijin817/brtpfserver-main
+      ports:
+        - containerPort: 8080
+  port: 8080
+  path: /
+  initPolicy: ForceInit
+

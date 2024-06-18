@@ -1,0 +1,15 @@
+{
+  "title": "My Linked Data Fragments server",
+  "datasources": {
+    "DATASET_NAME": {
+      "title": "DATASET_NAME",
+      "type": "HdtDatasource",
+      "description": "DATASET_NAME",
+      "settings": {
+        "file": "/tmp/dump.hdt"
+      }
+    }
+  },
+  "prefixes": {
+  }
+}
