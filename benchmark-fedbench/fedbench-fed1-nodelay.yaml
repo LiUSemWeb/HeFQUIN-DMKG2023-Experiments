@@ -1,0 +1,620 @@
+apiVersion: kobe.semagrow.org/v1alpha1
+kind: Benchmark
+metadata:
+  name: fedbench-het3-nodelay
+spec:
+  datasets:
+    - name: dbpedia-endpoint
+      files:
+        - url: https://users.iit.demokritos.gr/~gmouchakis/dumps/DBPedia-Subset.tar.gz
+      templateRef: virtuosotemplate
+    - name: geonames-endpoint
+      files:
+        - url: https://users.iit.demokritos.gr/~gmouchakis/dumps/GeoNames.tar.gz
+      templateRef: virtuosotemplate
+    - name: chebi-endpoint
+      files:
+        - url: https://users.iit.demokritos.gr/~gmouchakis/dumps/ChEBI.tar.gz
+      templateRef: virtuosotemplate
+    - name: drugbank-tpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/drugbank.hdt
+      templateRef: ldfservertemplate-hdt
+    - name: kegg-brtpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/kegg.hdt
+      templateRef: brtpfservertemplate
+    - name: jamendo-tpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/jamendo.hdt
+      templateRef: ldfservertemplate-hdt
+    - name: lmdb-brtpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/linkedmdb.hdt
+      templateRef: brtpfservertemplate
+    - name: nyt-brtpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/nytimes.hdt
+      templateRef: brtpfservertemplate
+    - name: swdfood-tpf
+      files:
+        - url: https://downloads.linkeddatafragments.org/hdt/fedbench/swdf.hdt
+      templateRef: ldfservertemplate-hdt
+  queries:
+    - name: cd1
+      language: sparql
+      queryString: "SELECT ?predicate ?object WHERE {
+   { 
+      SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{<http://dbpedia.org/resource/Barack_Obama> ?predicate ?object}
+   }
+   UNION    
+   { 
+      SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?subject <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Barack_Obama>}
+      {
+         {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?subject ?predicate ?object}}
+         UNION
+         {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?subject ?predicate ?object}}
+         UNION
+         {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?subject ?predicate ?object}}
+         UNION
+         {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?subject ?predicate ?object}}
+         UNION
+         {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?subject ?predicate ?object}}
+         UNION
+         {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?subject ?predicate ?object}}
+      } 
+   }
+}"
+    - name: cd2
+      language: sparql
+      queryString: "SELECT ?party ?page  WHERE {
+   SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{<http://dbpedia.org/resource/Barack_Obama> <http://dbpedia.org/ontology/party> ?party}
+   SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?x <http://data.nytimes.com/elements/topicPage> ?page .
+   ?x <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Barack_Obama> .}
+}"
+    - name: cd3
+      language: sparql
+      queryString: "SELECT ?president ?party ?page WHERE {
+   SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {?president <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/President> .
+   ?president <http://dbpedia.org/ontology/nationality> <http://dbpedia.org/resource/United_States> .
+   ?president <http://dbpedia.org/ontology/party> ?party .}
+   SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?x <http://data.nytimes.com/elements/topicPage> ?page .}
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+      UNION
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+      UNION
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?x <http://www.w3.org/2002/07/owl#sameAs> ?president .}}
+   }
+}"
+    - name: cd4
+      language: sparql
+      queryString: "SELECT ?actor ?news WHERE {
+   SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?film <http://purl.org/dc/terms/title> 'Tarzan' .
+    ?film <http://data.linkedmdb.org/resource/movie/actor> ?actor .}
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+      UNION
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+      UNION
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?actor <http://www.w3.org/2002/07/owl#sameAs> ?x.}}
+   }
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+      UNION
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+      UNION
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?y <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+   }
+   SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?y <http://data.nytimes.com/elements/topicPage> ?news}
+}"
+    - name: cd5
+      language: sparql
+      queryString: "SELECT ?film ?director ?genre WHERE {
+   SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {    ?film <http://dbpedia.org/ontology/director>  ?director .
+   ?director <http://dbpedia.org/ontology/nationality> <http://dbpedia.org/resource/Italy> . }
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+      UNION
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+      UNION
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+   }
+   SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?x <http://data.linkedmdb.org/resource/movie/genre> ?genre .}
+}"
+    - name: cd6
+      language: sparql
+      queryString: "SELECT ?name ?location ?news WHERE {
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?artist <http://xmlns.com/foaf/0.1/name> ?name .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?artist <http://xmlns.com/foaf/0.1/name> ?name .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?artist <http://xmlns.com/foaf/0.1/name> ?name .}}
+   }
+   { 
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?artist <http://xmlns.com/foaf/0.1/based_near> ?location .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?artist <http://xmlns.com/foaf/0.1/based_near> ?location .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?artist <http://xmlns.com/foaf/0.1/based_near> ?location .}}
+   }
+   {
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?location <http://www.geonames.org/ontology#parentFeature> ?germany .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?location <http://www.geonames.org/ontology#parentFeature> ?germany .}}
+   }
+   SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?germany <http://www.geonames.org/ontology#name> 'Federal Republic of Germany'}
+}"
+    - name: cd7
+      language: sparql
+      queryString: "SELECT ?location ?news WHERE {
+   {
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?location <http://www.geonames.org/ontology#parentFeature> ?parent .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?location <http://www.geonames.org/ontology#parentFeature> ?parent .}}
+   } 
+   {
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?parent <http://www.geonames.org/ontology#name> 'California' .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?parent <http://www.geonames.org/ontology#name> 'California' .}}
+   }
+   {
+      {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+      UNION
+      {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+      UNION
+      {SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+      UNION
+      {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+      UNION
+      {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+      UNION
+      {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?y <http://www.w3.org/2002/07/owl#sameAs> ?location .}}
+   }
+   SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{?y <http://data.nytimes.com/elements/topicPage> ?news}
+}"
+    - name: ld1
+      language: sparql
+      queryString: "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+  SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ 
+    ?paper <http://data.semanticweb.org/ns/swc/ontology#isPartOf> <http://data.semanticweb.org/conference/iswc/2008/poster_demo_proceedings> .
+    ?paper <http://swrc.ontoware.org/ontology#author> ?p .
+  }
+  {
+    { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+  }
+}"
+    - name: ld2
+      language: sparql
+      queryString: "SELECT * WHERE {
+  SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+    ?proceedings <http://data.semanticweb.org/ns/swc/ontology#relatedToEvent>  <http://data.semanticweb.org/conference/eswc/2010> .
+    ?paper <http://data.semanticweb.org/ns/swc/ontology#isPartOf> ?proceedings .
+    ?paper <http://swrc.ontoware.org/ontology#author> ?p .
+  }
+}"
+    - name: ld3
+      language: sparql
+      queryString: "PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+  SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+    ?paper <http://data.semanticweb.org/ns/swc/ontology#isPartOf> <http://data.semanticweb.org/conference/iswc/2008/poster_demo_proceedings> .
+    ?paper <http://swrc.ontoware.org/ontology#author> ?p .
+  }
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2002/07/owl#sameAs> ?x .}}
+  }
+  {
+    { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?n .}}
+  }
+}"
+    - name: ld4
+      language: sparql
+      queryString: "SELECT * WHERE {
+  SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+    ?role <http://data.semanticweb.org/ns/swc/ontology#isRoleAt> <http://data.semanticweb.org/conference/eswc/2010> .
+    ?role <http://data.semanticweb.org/ns/swc/ontology#heldBy> ?p .
+    ?paper <http://swrc.ontoware.org/ontology#author> ?p .
+    ?paper <http://data.semanticweb.org/ns/swc/ontology#isPartOf> ?proceedings .
+    ?proceedings <http://data.semanticweb.org/ns/swc/ontology#relatedToEvent>  <http://data.semanticweb.org/conference/eswc/2010> .
+  }
+}"
+    - name: ld5
+      language: sparql
+      queryString: "PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dbprop: <http://dbpedia.org/property/>
+PREFIX dbowl: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX factbook: <http://www4.wiwiss.fu-berlin.de/factbook/ns#>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX fb: <http://rdf.freebase.com/ns/>
+SELECT * WHERE {
+  SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{
+    ?a dbowl:artist dbpedia:Michael_Jackson .
+    ?a rdf:type dbowl:Album .
+  }
+  {
+    {SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?a <http://xmlns.com/foaf/0.1/name> ?n .}}
+    UNION
+    {SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?a <http://xmlns.com/foaf/0.1/name> ?n .}}
+    UNION
+    {SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?a <http://xmlns.com/foaf/0.1/name> ?n .}}
+  }
+}"
+    - name: ld6
+      language: sparql
+      queryString: "PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dbowl: <http://dbpedia.org/ontology/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX linkedMDB: <http://data.linkedmdb.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT * WHERE {
+  SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{
+    ?director dbowl:nationality dbpedia:Italy .
+    ?film dbowl:director ?director.
+  }
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2002/07/owl#sameAs> ?film .}}
+  }
+  {
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x foaf:based_near ?y .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?x foaf:based_near ?y .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x foaf:based_near ?y .}}
+  }
+  SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?y <http://www.geonames.org/ontology#officialName> ?n .}
+}"
+    - name: ld7
+      language: sparql
+      queryString: "PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dbowl: <http://dbpedia.org/ontology/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX linkedMDB: <http://data.linkedmdb.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX gn: <http://www.geonames.org/ontology#>
+SELECT * WHERE {
+  SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x gn:parentFeature <http://sws.geonames.org/2921044/> .}
+  {
+    {SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x gn:name ?n .}}
+    UNION
+    {SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?x gn:name ?n .}}
+  } 
+}"
+    - name: ld8
+      language: sparql
+      queryString: "PREFIX kegg: <http://bio2rdf.org/ns/kegg#>
+PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT * WHERE {
+  SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> {
+    ?drug drugbank:drugCategory <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/micronutrient> .
+    ?drug drugbank:casRegistryNumber ?id .
+  }
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?drug <http://www.w3.org/2002/07/owl#sameAs> ?s .}}
+  }
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?s <http://xmlns.com/foaf/0.1/name> ?o .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?s <http://xmlns.com/foaf/0.1/name> ?o .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?s <http://xmlns.com/foaf/0.1/name> ?o .}}
+  }
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?s skos:subject ?sub .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?s skos:subject ?sub .}}
+  }
+}"
+    - name: ld10
+      language: sparql
+      queryString: "PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dbprop: <http://dbpedia.org/property/>
+PREFIX dbowl: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX factbook: <http://www4.wiwiss.fu-berlin.de/factbook/ns#>
+SELECT * WHERE {
+  SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?n skos:subject <http://dbpedia.org/resource/Category:Chancellors_of_Germany> .}
+  {
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?n <http://www.w3.org/2002/07/owl#sameAs> ?p2 .}}
+  }
+  SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?p2 <http://data.nytimes.com/elements/latest_use> ?u .}
+}"
+    - name: ld11
+      language: sparql
+      queryString: "PREFIX geo-ont: <http://www.geonames.org/ontology#>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dbprop: <http://dbpedia.org/property/>
+PREFIX dbowl: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX factbook: <http://www4.wiwiss.fu-berlin.de/factbook/ns#>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT * WHERE {
+  SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ 
+    ?x dbowl:team dbpedia:Eintracht_Frankfurt .
+    ?x dbowl:birthDate ?d .
+    ?x dbowl:birthPlace ?p .
+  }
+  {
+    { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?x <http://www.w3.org/2000/01/rdf-schema#label> ?y .}}
+  }
+  {
+    { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://geonames-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://jamendo-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://lmdb-brtpf.fedbench-het3-nodelay.svc:8080/lmdb-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://nyt-brtpf.fedbench-het3-nodelay.svc:8080/nyt-brtpf>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+    UNION
+    { SERVICE <http://swdfood-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{ ?p <http://www.w3.org/2000/01/rdf-schema#label> ?l .}}
+  }
+}"
+    - name: ls1
+      language: sparql
+      queryString: "SELECT $drug $melt WHERE {
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> { $drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/meltingPoint> $melt. } }
+    UNION
+    { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> { $drug <http://dbpedia.org/ontology/Drug/meltingPoint> $melt . } }
+}"
+    - name: ls2
+      language: sparql
+      queryString: "SELECT ?predicate ?object WHERE {
+    { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> { <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00201> ?predicate ?object . } }
+    UNION    
+    { 
+      SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> {<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00201> <http://www.w3.org/2002/07/owl#sameAs> ?caff .}
+      {
+          { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {?caff ?predicate ?object .} }
+          UNION
+          { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf> {?caff ?predicate ?object .} }
+          UNION
+          { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> {?caff ?predicate ?object .} }
+          UNION
+          { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {?caff ?predicate ?object .} }
+      }
+    } 
+}"
+    - name: ls3
+      language: sparql
+      queryString: "SELECT ?Drug ?IntDrug ?IntEffect WHERE {
+    SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> { ?Drug <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Drug> .}
+    {
+        { SERVICE <http://dbpedia-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {?y <http://www.w3.org/2002/07/owl#sameAs> ?Drug .} }
+        UNION
+        { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{?y <http://www.w3.org/2002/07/owl#sameAs> ?Drug .} }
+        UNION
+        { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{?y <http://www.w3.org/2002/07/owl#sameAs> ?Drug .} }
+    }
+    SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata> {
+        ?Int <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1> ?y .
+        ?Int <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug2> ?IntDrug .
+        ?Int <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/text> ?IntEffect . 
+    }
+}"
+    - name: ls4
+      language: sparql
+      queryString: "SELECT ?drugDesc ?cpd ?equation WHERE {
+   SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+        ?drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/cathartics> .
+        ?drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId> ?cpd .
+        ?drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/description> ?drugDesc .
+   }
+   SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{
+       ?enzyme <http://bio2rdf.org/ns/kegg#xSubstrate> ?cpd .
+       ?enzyme <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bio2rdf.org/ns/kegg#Enzyme> .
+       ?reaction <http://bio2rdf.org/ns/kegg#xEnzyme> ?enzyme .
+       ?reaction <http://bio2rdf.org/ns/kegg#equation> ?equation . 
+   }
+}"
+    - name: ls5
+      language: sparql
+      queryString: "SELECT $drug $keggUrl $chebiImage WHERE {
+    SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+      $drug <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs> .
+      $drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId> $keggDrug .
+      $drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/genericName> $drugBankName .
+    }
+    {
+        { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ $keggDrug <http://bio2rdf.org/ns/bio2rdf#url> $keggUrl . } }
+        UNION
+        { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ $keggDrug <http://bio2rdf.org/ns/bio2rdf#url> $keggUrl .} }
+    }
+    {
+        { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{$chebiDrug <http://purl.org/dc/elements/1.1/title> $drugBankName .} }
+        UNION
+        { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{$chebiDrug <http://purl.org/dc/elements/1.1/title> $drugBankName .} }
+    }
+    SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql> {$chebiDrug <http://bio2rdf.org/ns/bio2rdf#image> $chebiImage .}
+}"
+    - name: ls6
+      language: sparql
+      queryString: "SELECT ?drug ?title WHERE { 
+    SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+        ?drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/micronutrient> .
+        ?drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/casRegistryNumber> ?id .
+    }
+    SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf> { ?keggDrug <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bio2rdf.org/ns/kegg#Drug> .}
+    {
+        { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{ ?keggDrug <http://bio2rdf.org/ns/bio2rdf#xRef> ?id . } }
+        UNION
+        { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{ ?keggDrug <http://bio2rdf.org/ns/bio2rdf#xRef> ?id . } }
+    }
+    {
+        { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{?keggDrug <http://purl.org/dc/elements/1.1/title> ?title .} }
+        UNION
+        { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{?keggDrug <http://purl.org/dc/elements/1.1/title> ?title .} }
+    }    
+}"
+    - name: ls7
+      language: sparql
+      queryString: "SELECT $drug $transform $mass WHERE {  
+    { 
+        SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{
+            $drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/affectedOrganism>  'Humans and other mammals'.
+            $drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/casRegistryNumber> $cas .
+        }
+        {
+            { SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{$keggDrug <http://bio2rdf.org/ns/bio2rdf#xRef> $cas .} }
+            UNION
+            { SERVICE <http://chebi-endpoint.fedbench-het3-nodelay.svc:8890/sparql>{$keggDrug <http://bio2rdf.org/ns/bio2rdf#xRef> $cas .} }
+        }
+        SERVICE <http://kegg-brtpf.fedbench-het3-nodelay.svc:8080/kegg-brtpf>{$keggDrug <http://bio2rdf.org/ns/bio2rdf#mass> $mass}
+    } 
+    OPTIONAL { SERVICE <http://drugbank-tpf.fedbench-het3-nodelay.svc:3000/hdtdata>{$drug <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/biotransformation> $transform .} } 
+}"
