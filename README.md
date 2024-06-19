@@ -2,7 +2,6 @@
 This repository contains files for conducting experiments related to the paper [**A Cost Model to Optimize Queries over Heterogeneous Federations of RDF Data Sources**](https://dmkg-workshop.github.io/papers/paper7042.pdf).
 
 We utilize [**KOBE**](https://github.com/semagrow/kobe/), a benchmarking system based on Kubernetes infrastructure, to containerize and configure federations of RDF datasets, queries, federation engines, and experiments. The typical workflow for defining a KOBE experiment includes the following steps:
-
 1. **DatasetTemplate**: Create one for each dataset server used in your benchmark.
 2. **Benchmark**: Define it with a list of datasets and queries.
 3. **FederatorTemplate**: Create one for the federator engine used in your experiment.
@@ -155,7 +154,3 @@ minikube stop
 minikube delete
 ```
 Note: Previous experiment results will be lost upon restarting Minikube.
-
----
-
-This structured format should make it easier for users to follow and understand the instructions.
