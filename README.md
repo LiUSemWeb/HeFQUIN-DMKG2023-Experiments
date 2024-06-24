@@ -40,18 +40,22 @@ If the cluster is started on a remote server, such as `ontology.ida.liu.se`, use
 
 ### Install KOBE
 A detailed instruction for installing KOBE can be found [here](https://semagrow.github.io/kobe/getting_started/install/). There are some notes for the installation.
-1. For the installation of the Networking subsystem, to download 'istio' with specific verion, use the follwoing curl command:
+1. When installing the Networking subsystem, you can consult the [official installation guide](https://istio.io/latest/docs/setup/getting-started/) or follow the steps below.
+- To download 'istio' with specific verion, use the follwoing curl command:
 ```
     curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.11.3 TARGET_ARCH=x86_64 sh -
-    export PATH="$PATH:/home/sijch63/HeFQUIN-experiment/kobe/istio-1.11.3/bin"
-    istioctl manifest apply --set profile=default
 ```
-Then, install Istio
+- Then, add the istioctl client to your path (Linux or macOS):
+```
+    export PATH=$PWD/istio-1.11.3/bin:$PATH
+```
+- Then, install Istio using the following command:
 ```
 istioctl install --set profile=demo -y
 ```
 2. Before installing the logging subsystem, 'helm' need to be installed. Note the current commend only works for helm2.
-An instruction to install and set up helm 2 and tiller can be found [here](https://v2.helm.sh/docs/install/)
+An instruction to install and set up helm2 and tiller can be found [here](https://v2.helm.sh/docs/install/)
+
 After set up all required components, you can check status of all Pods via browswer, or via command:
 ```kubectl get pods```
 
@@ -66,7 +70,7 @@ kobectl apply dataset/dataset-virtuoso/virtuosotemplate.yaml
 kobectl apply dataset/dataset-ldfserver-hdt/ldfservertemplate-hdt.yaml
 kobectl apply dataset/dataset-brtpfserver/brtpfservertemplate.yaml
 ```
-For the TPF server and brTPF server, two docker images are used and corresponding source code for these images can be found in the corresponding directory. If any changes applied, these docker images need to be rebuilt using the following command:
+For the TPF server and brTPF server, several docker images are used and corresponding source code for these images can be found in the corresponding directory. If any changes applied, these docker images need to be rebuilt using the following command:
 - TPF server:
 ```
 cd dataset/dataset-ldfserver-hdt
@@ -78,7 +82,7 @@ cd ../ldfserver-main-hdt
 docker build --no-cache -t chengsijin817/ldfserver-main-hdt .
 docker push chengsijin817/ldfserver-main-hdt
 ```
-Note: image names should be the same as in ldfservertemplate-hdt.yaml file
+Note: '[chengsijin817/ldfserver-init-hdt](https://hub.docker.com/r/chengsijin817/ldfserver-init-hdt)' and '[chengsijin817/ldfserver-main-hdt](https://hub.docker.com/r/chengsijin817/ldfserver-main-hdt)' are image names, which can be renamed but should be the same as specified in ldfservertemplate-hdt.yaml file.
 
 - brTPF server:
 ```
@@ -91,6 +95,8 @@ cd ../brtpfserver-main
 docker build --no-cache -t chengsijin817/brtpfserver-main .
 docker push chengsijin817/brtpfserver-main
 ```
+Similarly, '[chengsijin817/brtpfserver-init](https://hub.docker.com/r/chengsijin817/brtpfserver-init)' and '[chengsijin817/brtpfserver-main](https://hub.docker.com/r/chengsijin817/brtpfserver-main)' are image names, which can be renamed but should be the same as specified in brtpfservertemplate.yaml file.
+
 2. Deploy a benchmark, specifying all federation members and benchmark queries.
 ```
 kobectl apply benchmark-fedbench/fedbench-het3-nodelay.yaml
@@ -100,6 +106,7 @@ Note: Queries should use correct URIs in SERVICE clause, depending on the type o
 Two example federations are provided under directory 'benchmark-fedbench'.
 
 3. Deploy HeFQUIN engine
+
 Use one of the following commands to apply a implementation of HeFQUIN engine:
 ```
 kobectl apply federator-hefquin/hefquin-mincost-greedy.yaml 
@@ -108,9 +115,9 @@ Or
 ```
 kobectl apply federator-hefquin/hefquin-card-greedy.yaml 
 ```
-For example, hefquin-mincost-greedy.yaml invokes a docker [image]((https://hub.docker.com/r/chengsijin817/hefquin-mincost-greedy)) of HeFQUIN engine, which implements cost-based greedy algorithm applied.
+For example, hefquin-mincost-greedy.yaml invokes a [docker image](https://hub.docker.com/r/chengsijin817/hefquin-mincost-greedy) of HeFQUIN engine, which implements cost-based greedy algorithm applied.
 
-To integrate the HeFQUIN engine with the KOBE system, use the following Docker images: `chengsijin817/hefquin-init` and `chengsijin817/hefquin-init-all`. The source code for these images can be found in the repository directory. To rebuild these images after updates:
+To integrate the HeFQUIN engine with the KOBE system, use the following Docker images: '[chengsijin817/hefquin-init](https://hub.docker.com/r/chengsijin817/hefquin-init)' and '[chengsijin817/hefquin-init-all](https://hub.docker.com/r/chengsijin817/hefquin-init-all)'. The source code for these images can be found in the repository directory. To rebuild these images after updates:
 ```bash
 cd federator-hefquin/hefquin-init
 docker build --no-cache -t chengsijin817/hefquin-init .
