@@ -1,7 +1,9 @@
 ## Overview
 This repository contains files for conducting experiments related to the paper [**A Cost Model to Optimize Queries over Heterogeneous Federations of RDF Data Sources**](https://dmkg-workshop.github.io/papers/paper7042.pdf).
 
-We utilize [**KOBE**](https://github.com/semagrow/kobe/), a benchmarking system based on Kubernetes infrastructure, to containerize and configure federations of RDF datasets, queries, federation engines, and experiments. The typical workflow for defining a KOBE experiment includes the following steps:
+We have implemented the cost model introduced in the paper (as well as the baseline approach) in our query federation engine called [HeFQUIN](https://github.com/LiUSemWeb/HeFQUIN/).
+
+For running the experiments we utilize [**KOBE**](https://github.com/semagrow/kobe/), a benchmarking system based on Kubernetes infrastructure, to containerize and configure federations of RDF datasets, queries, federation engines, and experiments. The typical workflow for defining a KOBE experiment includes the following steps:
 1. **DatasetTemplate**: Create one for each dataset server used in your benchmark.
 2. **Benchmark**: Define it with a list of datasets and queries.
 3. **FederatorTemplate**: Create one for the federator engine used in your experiment.
