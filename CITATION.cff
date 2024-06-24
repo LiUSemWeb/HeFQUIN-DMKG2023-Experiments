@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "HeFQUIN DMKG'2023 Experiments"
+version: 0.1.0
+url: "https://github.com/LiUSemWeb/HeFQUIN-DMKG2023-Experiments"
+preferred-citation:
+  type: conference-paper
+  authors:
+  - family-names: "Cheng"
+    given-names: "Sijin"
+    orcid: "https://orcid.org/0000-0003-4363-0654"
+  - family-names: "Hartig"
+    given-names: "Olaf"
+    orcid: "https://orcid.org/0000-0002-1741-2090"
+  title: "A Cost Model to Optimize Queries over Heterogeneous Federations of RDF Data Sources"
+  collection-title: "Proceedings of the 1st International Workshop on Data Management for Knowledge Graphs (DMKG)"
+  year: 2023
